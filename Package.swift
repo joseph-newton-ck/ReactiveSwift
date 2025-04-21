@@ -16,7 +16,11 @@ let package = Package(
     ],
     targets: [
         .target(name: "ReactiveSwift", dependencies: [], path: "Sources"),
-        .testTarget(name: "ReactiveSwiftTests", dependencies: ["ReactiveSwift", "Quick", "Nimble"]),
+        .testTarget(name: "ReactiveSwiftTests", dependencies: [
+            .target(name: "ReactiveSwift"), 
+            .product(name: "Quick", package: "Quick"),
+            .product(name: "Nimble", package: "Nimble"),
+        ]),
     ],
     swiftLanguageVersions: [.v5]
 )
